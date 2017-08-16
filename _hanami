@@ -3,7 +3,20 @@
 
 # hanami zsh completion
 
-local -a options arguments 
-options=('--version:Display current hanami version')
-arguments=('new:Generate new hanami project')
+local -a options arguments
+options=(
+  '-v:Display current hanami version'
+  '--version:Display current hanami version'
+)
+
+arguments=(
+  'new:Generate new hanami project' \
+  'generate:Generate part of hanami project' \
+  'destroy:Destroy part of hanami project' \
+  'db:DB specific commands' \
+  'assets:Assets specific commands' \
+  'routes:Rerutns list of all project routes' \
+  'version:Display current hanami version'
+)
+
 _describe 'values' options -- arguments
