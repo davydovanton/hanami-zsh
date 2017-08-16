@@ -1,0 +1,9 @@
+#compdef hanami
+#autoload
+
+# hanami zsh completion
+
+local -a options arguments 
+options=('--version:Display current hanami version')
+arguments=('new:Generate new hanami project')
+_describe 'values' options -- arguments
