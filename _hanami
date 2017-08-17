@@ -50,6 +50,15 @@ case $state in
                 "secret[Generate new hanami secret]"
 				ret=0
 				;;
+			destroy)
+            _values "hanami destroy command" \
+                "app[Destroy new hanami app]" \
+                "action[Destroy new hanami action]" \
+                "model[Destroy new hanami model]" \
+                "migration[Destroy new hanami migration]" \
+                "mailer[Destroy new hanami mailer]"
+				ret=0
+				;;
 		esac
 		;;
 esac
