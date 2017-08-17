@@ -3,20 +3,55 @@
 
 # hanami zsh completion
 
-local -a options arguments
-options=(
-  '-v:Display current hanami version'
-  '--version:Display current hanami version'
-)
+local curcontext="$curcontext" state line _opts ret=1
 
-arguments=(
-  'new:Generate new hanami project' \
-  'generate:Generate part of hanami project' \
-  'destroy:Destroy part of hanami project' \
-  'db:DB specific commands' \
-  'assets:Assets specific commands' \
-  'routes:Rerutns list of all project routes' \
-  'version:Display current hanami version'
-)
+_arguments -C -A "-v" -A "--version" \
+	'(- 1 *)'{-v,--version}'[display version information]' \
+	'1: :->cmds' \
+	'*:: :->args' && ret=0
 
-_describe 'values' options -- arguments
+case $state in
+	cmds)
+		_values "hanami command" \
+        "new[Generate new hanami project]" \
+        "generate[Generate part of hanami project]" \
+        "destroy[Destroy part of hanami project]" \
+        "db[DB specific commands]" \
+        "assets[Assets specific commands]" \
+        "routes[Rerutns list of all project routes]" \
+        "version[Display current hanami version]"
+		ret=0
+		;;
+	args)
+		case $line[1] in
+			help)
+				_values 'commands' \
+                    'new' \
+                    'generate' \
+                    'destroy' \
+                    'db' \
+                    'assets' \
+                    'routes' \
+                    'version' && ret=0
+				;;
+			new)
+				_arguments \
+					'(--test)--test=-[generate project for a specific test framework]' \
+					'(--database)--database=-[generate project for a specific database]'
+				ret=0
+				;;
+			generate)
+            _values "hanami generate command" \
+                "app[Generate new hanami app]" \
+                "action[Generate new hanami action]" \
+                "model[Generate new hanami model]" \
+                "migration[Generate new hanami migration]" \
+                "mailer[Generate new hanami mailer]" \
+                "secret[Generate new hanami secret]"
+				ret=0
+				;;
+		esac
+		;;
+esac
+
+return ret
