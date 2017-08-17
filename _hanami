@@ -59,6 +59,16 @@ case $state in
                 "mailer[Destroy new hanami mailer]"
 				ret=0
 				;;
+			db)
+            _values "hanami db command" \
+                "create[Create the database for the current environment]" \
+                "drop[Drop the existing database for the current environment]" \
+                "migrate[Run migrations found in db/migrations]" \
+                "prepare[Prepares database for the current environment]" \
+                "apply[Dumps a fresh schema into db/schema.sql]" \
+                "version[Prints current database version]"
+				ret=0
+				;;
 		esac
 		;;
 esac
