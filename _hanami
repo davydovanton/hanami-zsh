@@ -69,6 +69,11 @@ case $state in
                 "version[Prints current database version]"
 				ret=0
 				;;
+			assets)
+            _values "hanami assets command" \
+                "precompile[precompiles and copies all the assets from all the applications and third party gems]"
+				ret=0
+				;;
 		esac
 		;;
 esac
