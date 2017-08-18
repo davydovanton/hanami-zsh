@@ -18,7 +18,7 @@ case $state in
         "destroy[Destroy part of hanami project]" \
         "db[DB specific commands]" \
         "assets[Assets specific commands]" \
-        "routes[Rerutns list of all project routes]" \
+        "routes[Returns list of all project routes]" \
         "version[Display current hanami version]" \
         "console[Run hanami console]"
 		ret=0
