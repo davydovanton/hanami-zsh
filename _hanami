@@ -19,7 +19,8 @@ case $state in
         "db[DB specific commands]" \
         "assets[Assets specific commands]" \
         "routes[Rerutns list of all project routes]" \
-        "version[Display current hanami version]"
+        "version[Display current hanami version]" \
+        "console[Run hanami console]"
 		ret=0
 		;;
 	args)
